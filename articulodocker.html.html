@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artículo | Docker para principiantes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light text-dark">
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 bg-white p-4 p-md-5 border border-dark">
+                
+                <a href="./portafolio.html" class="text-dark text-decoration-none fw-bold mb-4 d-inline-block">&larr; Volver al Portafolio</a>
+
+                <h1 class="fw-bold mb-3">Docker para principiantes: ¿Por qué usar contenedores?</h1>
+                <p class="text-secondary small mb-5">Publicado el 2 de Noviembre, 2025 | Categoría: <span class="badge bg-dark rounded-0">DevOps</span></p>
+
+                <p class="lead fw-semibold">"En mi máquina sí funciona". Esa es la frase que Docker vino a destruir. Contenerizar tus aplicaciones desde el día 1 te ahorrará horas de dolores de cabeza en los despliegues.</p>
+
+                <h4 class="fw-bold mt-5 mb-3">¿Qué es exactamente un contenedor?</h4>
+                <p>Imagina un contenedor como una caja aislada que empaqueta tu aplicación y todo lo que necesita para ejecutarse (versión exacta de Python, librerías, sistema operativo base). Si esa caja se ejecuta bien en tu computadora portátil, funcionará exactamente igual en el servidor de la nube.</p>
+
+                <h4 class="fw-bold mt-5 mb-3">Ejemplo: Un Dockerfile simple para Python</h4>
+                <p>Aquí tienes un archivo de configuración básico (llamado <code>Dockerfile</code>) para preparar y levantar una API:</p>
+                
+                <div class="bg-light border border-dark p-3 mb-4">
+                    <pre class="mb-0 text-dark"><code># 1. Usar una imagen oficial de Python ligera
+FROM python:3.10-slim
+
+# 2. Establecer el directorio de trabajo dentro del contenedor
+WORKDIR /app
+
+# 3. Copiar las dependencias e instalarlas
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 4. Copiar todo el código fuente de tu aplicación
+COPY . .
+
+# 5. Comando para arrancar el servidor web
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]</code></pre>
+                </div>
+
+                <h4 class="fw-bold mt-5 mb-3">El siguiente paso: Docker Compose</h4>
+                <p>Una vez que domines los contenedores individuales, el siguiente nivel en la cultura DevOps es usar <code>docker-compose.yml</code>. Esto te permite levantar tu API, tu base de datos (como PostgreSQL) y tu sistema de caché (como Redis) al mismo tiempo con un solo comando: <code>docker-compose up -d</code>.</p>
+
+                <hr class="my-5 border-dark">
+
+                <p class="small text-secondary text-center mb-0">Escrito por <strong>Santiago Garces</strong> - Ingeniero DevOps & Python</p>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
